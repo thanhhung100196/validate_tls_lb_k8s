@@ -1,0 +1,13 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: validate-tls
+spec:
+  containers:
+    - name: validate-tls
+      image: certbot-validation
+      resources:
+        limits:
+          cpu: "200m"
+          memory: "215Mi"
