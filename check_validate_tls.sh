@@ -12,6 +12,7 @@ else
     certbot renew --cert-name $domain
 
     # Update the secret in Kubernetes
+    kubectl delete secret tls-secret --namespace=default
     kubectl create secret tls tls-secret --cert=path/to/new/certificate.crt --key=path/to/new/private.key --namespace=default --dry-run=client -o yaml | kubectl apply -f -
     certbot renew --cert-name $domain
 fi
